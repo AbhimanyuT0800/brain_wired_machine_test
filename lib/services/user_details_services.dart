@@ -12,14 +12,19 @@ class UserDetailsServices {
 
       if (response.statusCode == 200) {
         /// cast respose data to list of elements
-        /// and return list of userdetails
+        /// and get list of user model
+        ///
+        /// sort according to user name and return
         final userDetailsList = response.data as List<dynamic>;
 
         return userDetailsList
             .map(
               (e) => UserDetailsModel.fromJson(e),
             )
-            .toList();
+            .toList()
+          ..sort(
+            (a, b) => a.username!.compareTo(b.username!),
+          );
       }
       throw BaseException('Response not found......!');
     } on DioException catch (e) {

@@ -5,6 +5,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'fetch_all_user_data_provider.g.dart';
 
+///fetch all user details
+///and return as list of [UserDetailsModel]
 @riverpod
 Future<List<UserDetailsModel>> fetchAllUserData(FetchAllUserDataRef ref) async {
   try {
