@@ -5,15 +5,25 @@ import 'package:dio/dio.dart';
 
 class UserDetailsServices {
   static Dio dio = Dio();
-  static Future<UserDetailsModel> getAllUserData() async {
+  static Future<List<UserDetailsModel>> getAllUserData() async {
     try {
+      // get response from api
       final Response response = await dio.get(baseUrl);
+
       if (response.statusCode == 200) {
-        return UserDetailsModel.fromJson(response.data);
+        /// cast respose data to list of elements
+        /// and return list of userdetails
+        final userDetailsList = response.data as List<dynamic>;
+
+        return userDetailsList
+            .map(
+              (e) => UserDetailsModel.fromJson(e),
+            )
+            .toList();
       }
       throw BaseException('Response not found......!');
-    } catch (e) {
-      throw BaseException(e.toString());
+    } on DioException catch (e) {
+      throw BaseException(e.message ?? 'Something went wrong');
     }
   }
 }
