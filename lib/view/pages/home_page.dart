@@ -115,18 +115,3 @@ class HomePage extends HookConsumerWidget {
             ));
   }
 }
-
-
-// Container(
-//                         height: context.screenHeight(70),
-//                         width: double.infinity,
-//                         decoration: BoxDecoration(
-//                           color: ColorPallets.white500,
-//                           border: Border.all(color: ColorPallets.borderColor),
-//                           borderRadius: BorderRadius.circular(7),
-//                         ),
-//                         child: Text(
-//                           userData.username ?? userPageConsts.txtUnknown,
-//                           style: GoogleFonts.poppins(fontSize: 14),
-//                         ),
-//                       ),
